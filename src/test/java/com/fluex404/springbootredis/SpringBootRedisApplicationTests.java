@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
 class SpringBootRedisApplicationTests {
@@ -60,7 +61,12 @@ class SpringBootRedisApplicationTests {
 //		Long size = hashOperations.size("USER");
 //		System.out.println(size);
 
+		/** set expired **/
+//		redisTemplate.expire("USER", 40, TimeUnit.SECONDS);
 
+		/** get expired **/
+//		Long expiredTime = redisTemplate.getExpire("USER");
+//		System.out.println(expiredTime);
 	}
 
 }
