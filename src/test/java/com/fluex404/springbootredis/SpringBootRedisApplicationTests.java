@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.ui.ModelMap;
 
 import java.util.Map;
@@ -54,8 +55,8 @@ class SpringBootRedisApplicationTests {
 //		redisTemplate.opsForList().push
 
 		/** keys **/
-		Set keys = hashOperations.keys("USER");
-		System.out.println(keys.toString());
+//		Set keys = hashOperations.keys("USER");
+//		System.out.println(keys.toString());
 
 		/** size **/
 //		Long size = hashOperations.size("USER");
@@ -67,6 +68,15 @@ class SpringBootRedisApplicationTests {
 		/** get expired **/
 //		Long expiredTime = redisTemplate.getExpire("USER");
 //		System.out.println(expiredTime);
+
+		/** ValueOperations **/
+		ValueOperations valueOperations = redisTemplate.opsForValue();
+
+		valueOperations.set("kuda", "loncat");
+		valueOperations.set("kuda2", "loncat 2 kali");
+
+		System.out.println(valueOperations.get("kuda"));
+		System.out.println(valueOperations.get("kuda2"));
 	}
 
 }
